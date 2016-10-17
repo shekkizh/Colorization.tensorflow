@@ -1,5 +1,5 @@
 # Image Colorization using Convolutional Networks
-This is a long overdue project I have been trying to get working ever since I read the article by Ryan Dahl on the topic. The idea of sematically understanding concepts in an image and color them with statistical prior knowledge gained from a training with a dataset.
+This is a long overdue project I have been trying to get working ever since I read the article by Ryan Dahl on the topic. The idea is to sematically understand concepts in an image and color them with statistical prior knowledge gained from training with a dataset.
 
 The model was initially tested for architecture with the flowers dataset from tensorflow and later trained on the [LaMem dataset](http://memorability.csail.mit.edu) from MIT.
 
