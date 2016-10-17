@@ -49,7 +49,7 @@ From the above plot we can infer that the network predicted color values comes f
 - Prominent colors such as those for skies, trees and white background were the first colors to be learnt. Also skin tone for humans was noticeably learnt with good predictions amongst other things. 
 
 ----
-Some interesting outputs I got while working with flowers dataset. The outputs below are the results of applying the algorithm. The original colors for these flowers were nothing like the once predicted :v:
+Some interesting outputs I got while working with flowers dataset. The outputs below are the results of applying the algorithm. The original colors for these flowers were nothing like the ones predicted :v:
 
 ![](results/flowers/pred29.png) ![](results/flowers/pred30.png) ![](results/flowers/pred35.png) ![](results/flowers/pred39.png)
 
