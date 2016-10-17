@@ -1,0 +1,8 @@
+.idea/*
+*.pyc
+Data_zoo/*
+logs/*
+
+
+Model_zoo/*
+Failed Attempts/*
