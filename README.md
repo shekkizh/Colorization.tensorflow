@@ -1,12 +1,16 @@
 # Colorization.tensorflow
 Image colorization using CNNs in tensorflow.
- Readme under edit :exclamation: Will be adding observations and references.
+ Readme under edit:exclamation: 
+Will be adding observations and references.
  
  
 ## Results 
 ![](results/loss.png)
 
-![](results/lab_split.png)
+***Lab*** color space split for original colored image (top) and predicted colored image (bottom)
+
+![](results/lab_split1.png)
+![](results/lab_split2.png)
 
 **Input - Predicted Color - Original Color**
 
