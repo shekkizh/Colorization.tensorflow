@@ -12,8 +12,7 @@ The model was initially tested for architecture with the flowers dataset from te
 The idea for the model architecture is very similar to that of "Residual Autoencoder" model by Ryan with modifications. The intiution is to have the imagenet model output layer from convolution (encoder) and then do transpose convolution and fuse with pool layers. Unlike ryan I tried to fuse only the higher pooling layers and didn't want the lower level layers for color prediction - the thought being higher level layers are compositional and capture concepts and the lower level layers are closely related to the modalities of the image. The below is crude representation of the architecture.
 
 Architecture:
-
-`**Image (Only L value)** -> 3x3 n64s1 -> ReLu -> VGG layer conv1_2 -> .. -> pool1 -> .. -> pool2 -> .. -> pool3 -> .. -> pool4 -> .. -> VGG relu5_4 -> conv_T 3x3 -> fuse with pool4 -> conv_T 3x3 -> fuse with pool3 -> conv_T 3x3 -> **a, b value prediction for Image**`
+> **Image (Only L value)** -> 3x3 n64s1 -> ReLu -> VGG layer conv1_2 -> .. -> pool1 -> .. -> pool2 -> .. -> pool3 -> .. -> pool4 -> .. -> VGG relu5_4 -> conv_T 3x3 -> fuse with pool4 -> conv_T 3x3 -> fuse with pool3 -> conv_T 3x3 -> **a, b value prediction for Image**
 
 Note that there is no non-linearites added after the conv transpose operation. The loss was formulated as a simple MSE between the predicted a,b and the original a,b values for the image. Training was done for about 25 epochs with the learning rate halved every 3 epochs are so. Adam Optimizer was used and the initial learning rate was set to 1e-4. As seen below the training is very slow but produces reasonable results.
 
