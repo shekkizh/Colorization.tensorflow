@@ -84,4 +84,5 @@ class BatchDatset:
 
     def get_random_batch(self, batch_size):
         indexes = np.random.randint(0, self.images.shape[0], size=[batch_size]).tolist()
-        return self.images[indexes], self.annotations[indexes]
+        images = self.images[indexes]
+        return np.expand_dims(images[:, :, :, 0], axis=3), images

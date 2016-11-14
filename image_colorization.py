@@ -177,8 +177,15 @@ def main(argv=None):
             if itr % 10000 == 0:
                 FLAGS.learning_rate /= 2
     elif FLAGS.mode == "test":
-
-
+        count = 10
+        l_image, color_images = batch_reader.get_random_batch(count)
+        feed_dict = {images: l_image, lab_images: color_images, train_phase: False}
+        save_dir = os.path.join(FLAGS.logs_dir, "image_pred")
+        pred = sess.run(pred_image, feed_dict=feed_dict)
+        for itr in range(count):
+            utils.save_image(color_images[itr], save_dir, "gt" + str(itr))
+            utils.save_image(pred[itr].astype(np.float64), save_dir, "pred" + str(itr))
+        print("--- Images saved on test run ---")
 
 if __name__ == "__main__":
     tf.app.run()
