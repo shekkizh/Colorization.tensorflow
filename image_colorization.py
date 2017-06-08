@@ -102,12 +102,13 @@ def generator(images, train_phase):
         fuse_2 = tf.add(conv_t2, image_net["pool3"], name="fuse_2")
 
         shape = tf.shape(images)
-        deconv_shape3 = tf.pack([shape[0], shape[1], shape[2], 2])
+        deconv_shape3 = tf.stack([shape[0], shape[1], shape[2], 2])
         W_t3 = utils.weight_variable([16, 16, 2, deconv_shape2[3].value], name="W_t3")
         b_t3 = utils.bias_variable([2], name="b_t3")
         pred = utils.conv2d_transpose_strided(fuse_2, W_t3, b_t3, output_shape=deconv_shape3, stride=8)
 
-    return tf.concat(concat_dim=3, values=[images, pred], name="pred_image")
+#    return tf.concat(concat_dim=3, values=[images, pred], name="pred_image")
+        return tf.concat([images, pred], 3, "pred_image")
 
 
 def train(loss, var_list):
@@ -127,7 +128,8 @@ def main(argv=None):
     pred_image = generator(images, train_phase)
 
     gen_loss_mse = tf.reduce_mean(2 * tf.nn.l2_loss(pred_image - lab_images)) / (IMAGE_SIZE * IMAGE_SIZE * 100 * 100)
-    tf.scalar_summary("Generator_loss_MSE", gen_loss_mse)
+    #    tf.scalar_summary("Generator_loss_MSE", gen_loss_mse)
+    tf.summary.scalar("Generator_loss_MSE", gen_loss_mse)
 
     train_variables = tf.trainable_variables()
     for v in train_variables:
